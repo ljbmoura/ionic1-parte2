@@ -1,0 +1,8 @@
+{
+  "name": "AluraCar",
+  "app_id": "f70326e2",
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*"
+  ]
+}

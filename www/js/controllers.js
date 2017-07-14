@@ -1,4 +1,27 @@
 angular.module('starter')
+
+.controller('LoginController', function($scope, $ionicPopup, $state) {
+    $scope.login = {
+	    email : 'ljbmoura@gmail.com',
+	    senha : 'padaria'
+	
+    };
+    
+    $scope.realizarLogin = function () {
+	console.debug('login iniciado');
+	
+	$ionicPopup.alert({
+		template: 'credencias aceitas',
+		title: 'login'})
+	.then (function (){
+	    $state.go('listagem')
+	});
+	
+	console.debug('login finalizado');
+    }
+});
+
+angular.module('starter')
 .controller('ListagemController', function($scope, CarroService){
 
 	CarroService.obterCarros().then(function(dados){

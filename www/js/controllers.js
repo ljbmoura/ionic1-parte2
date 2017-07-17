@@ -1,24 +1,38 @@
 angular.module('starter')
 
-.controller('LoginController', function($scope, $ionicPopup, $state) {
+.controller('LoginController', function($scope, $ionicPopup, $state, CarroService) {
+
     $scope.login = {
-	    email : 'ljbmoura@gmail.com',
-	    senha : 'padaria'
+	    email : 'joao@alura.com.br',
+	    senha : 'alura123'
 	
     };
     
     $scope.realizarLogin = function () {
+	
+	var dadosDoLogin = {
+		params : {
+		    email : $scope.login.email,
+		    senha : $scope.login.senha
+		}
+	}
 	console.debug('login iniciado');
 	
-	$ionicPopup.alert({
-		template: 'credencias aceitas',
-		title: 'login'})
-	.then (function (){
-	    $state.go('listagem')
-	});
-	
-	console.debug('login finalizado');
+	CarroService.realizarLogin(dadosDoLogin).then(function(dados){
+
+	    $state.go('app.listagem')
+	    
+	}, function(erro){
+	    $ionicPopup.alert({
+	      title : 'Opa!',
+	      template : 'E-mail ou senha incorretos.'
+	    })
+
+	})
+	  
+//	console.debug('login finalizado');
     }
+    
 });
 
 angular.module('starter')

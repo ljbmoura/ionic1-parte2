@@ -10,10 +10,21 @@ angular.module('starter')
 
 			});
 		}, 
+		
 		salvarPedido : function(pedido){
 			return $http.get(url + "salvarpedido" , pedido).then(function(response){
 				return "Deu certo.";
 			});
+		},
+		
+		realizarLogin : function (dadosDoLogin) {
+		    return $http.get(url + 'login', dadosDoLogin).then(function(response) {
+			return response.data;
+		    }, function(reason) {
+			log.debug('realizarLogin errorCallback');	
+		    }, function(value) {
+			log.debug('realizarLogin notifyCallback')
+		    })
 		}
 	}
 

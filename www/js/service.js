@@ -18,13 +18,18 @@ angular.module('starter')
 		},
 		
 		realizarLogin : function (dadosDoLogin) {
-		    return $http.get(url + 'login', dadosDoLogin).then(function(response) {
+		    return $http.get(url + 'login', dadosDoLogin).
+		    then(function(response) {
 			return response.data;
-		    }, function(reason) {
-			log.debug('realizarLogin errorCallback');	
-		    }, function(value) {
-			log.debug('realizarLogin notifyCallback')
-		    })
+		    }
+		    , function(reason) {
+			console.debug('realizarLogin errorCallback: ' + reason.status + '=' + reason.statusText + ' (' + reason.data.mensagem + ')' );	
+			return undefined;
+		    }
+//		    , function(value) {
+//			console.debug('realizarLogin notifyCallback: ' + value.status + '=' + value.statusText + ' (' + value.data.mensagem + ')' );
+//		    }
+		    )
 		}
 	}
 

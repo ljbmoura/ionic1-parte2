@@ -1,6 +1,6 @@
 angular.module('starter')
 
-.controller('LoginController', function($scope, $ionicPopup, $state, CarroService) {
+.controller('LoginController', function($scope, $ionicPopup, $state, CarroService, $rootScope) {
 
     $scope.login = {
 	    email : 'joao@alura.com.br',
@@ -16,13 +16,14 @@ angular.module('starter')
 		    senha : $scope.login.senha
 		}
 	}
-	console.debug('login iniciado');
+//	console.debug('login iniciado');
 	
 	CarroService.realizarLogin(dadosDoLogin).then(function(dados){
-
+	    $rootScope.usuario = dados.usuario;
 	    $state.go('app.listagem')
 	    
 	}, function(erro){
+	    console.debug(erro);
 	    $ionicPopup.alert({
 	      title : 'Opa!',
 	      template : 'E-mail ou senha incorretos.'
@@ -33,6 +34,12 @@ angular.module('starter')
 //	console.debug('login finalizado');
     }
     
+});
+
+
+angular.module('starter')
+.controller('MenuController', function($scope, $rootScope) {
+    $scope.usuarioLogado = $rootScope.usuario;
 });
 
 angular.module('starter')

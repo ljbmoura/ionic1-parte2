@@ -1,0 +1,58 @@
+24/05/2017
+
+ionic start AluraCar blank --type ionic1
+	cria um projeto inicial compat�vel com Ionic 1
+	
+ionic link
+	create a new app --> AluraCar --> https://apps.ionic.io/app/f70326e2/overview
+
+ionic login
+	ljbmoura@gmail.com
+	il...
+	
+na pasta D:\luciano\treinamento2017\ionic1-parte1\AluraCar
+	git remote add origin https://github.com/ljbmoura/ionic1-parte1.git
+	git push -u origin master	
+
+ionic serve --lab (ou -l)
+	abrir aplica��o em localhost:8100/ionic-lab
+	
+30/06/2017
+- reiniciando o curso
+
+- usando git manualmentea
+	git status
+	git add "caminho arquivo"
+	git commit -m "coment�rio"
+	git push -u origin aulas3e4
+	git remote -v
+	git fetch X git pull: fetch n�o faz merge, pull faz
+	git checkout master: troca branch do atual (aulas3e4) para o "master"
+	git merge aulas3e4: faz o merge do branch "aulas3e4" para o atual ("master")
+	git checkout -b aula5: cria novo branch "aula5" e troca para ele
+	
+upload para testes via ionic view
+	login usando ljbmoura@gmail.com
+	
+	ionic link: ligou o projeto através do arquivo ionic.config.jsom, campo "app_id": "f70326e2", com o serviço web em https://apps.ionic.io/
+
+	ionic upload
+	
+	 
+17/07/2017
+
+	cordova platform add browser
+	cordova run browser (ou cordova run browser --target=firefox)
+
+21/07
+	habilitar _JAVA_OPTIONS=-Xmx1024M no env.bat para rodar "cordova run android --device"
+		echo === Java
+		set JAVA_HOME=%envHome%\jdk\jdk1.8.0_74
+		set _JAVA_OPTIONS=-Xmx1024M
+	
+22/07
+	npm install --save-dev gulp
+	npm install : na pasta do projeto, instala tudo que precisa, ie, gulp, bower etc
+		
+	
+

@@ -1,0 +1,30 @@
+<ion-view view-title='Perfil do usuário'>
+
+	<ion-content>
+		<div class="list card">
+			
+			<div class="item item-avatar">
+				<h2>{{usuarioPerfil.nome}}</h2>
+			</div>
+			
+			<div class="item item-body">
+				<div class="list">
+					<label class="item item-input">
+						<span class="input-label" ng-show='!estaEditando'>Data de nascimento {{usuarioPerfil.dataNascimento}}</span>
+						<input type="text" ng-model='usuarioPerfil.dataNascimento' ng-show='estaEditando'>
+					</label>
+					<label class="item item-input">
+						<span class="input-label" ng-show='!estaEditando'>Telefone {{usuarioPerfil.telefone | brPhoneNumber}}</span>
+						<input type="text" ng-model='usuarioPerfil.telefone' ng-show='estaEditando'>
+					</label>
+					<label class="item item-input">
+						<span class="input-label" ng-show='!estaEditando'>Email {{usuarioPerfil.email}}</span>
+						<input type="text" ng-model='usuarioPerfil.email' ng-show='estaEditando'>
+					</label>
+					<button class="button button-full button-positive" ng-click='acaoAtual()'>{{rotuloBotao}}</button>
+				</div>
+			</div>	
+		</div>
+	</ion-content>
+
+</ion-view>

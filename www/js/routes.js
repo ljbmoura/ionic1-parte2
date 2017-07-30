@@ -11,7 +11,16 @@ $stateProvider
 	abstract : true,
 	controller : 'MenuController'
     })
-
+    
+    .state('app.perfil', {
+	url : '/perfil',
+	views : {
+	    'menuContent' : {
+		templateUrl : 'templates/perfil.html',
+		controller : 'PerfilController'
+	    }
+	}
+    })
 
     .state('app.listagem', {
 	url : '/listagem',

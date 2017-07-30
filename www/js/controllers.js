@@ -19,6 +19,7 @@ angular.module('starter')
 //	console.debug('login iniciado');
 	
 	CarroService.realizarLogin(dadosDoLogin).then(function(dados){
+	    console.debug(dados);
 	    $rootScope.usuario = dados.usuario;
 	    $state.go('app.listagem')
 	    
@@ -41,6 +42,28 @@ angular.module('starter')
 .controller('MenuController', function($scope, $rootScope) {
     $scope.usuarioLogado = $rootScope.usuario;
 });
+
+
+angular.module('starter')
+.controller('PerfilController', function($rootScope, $scope) {
+    
+    $scope.estaEditando = false;
+    
+    $scope.rotuloBotao = 'Editar';
+    
+    $scope.usuarioPerfil = $rootScope.usuario;
+    
+    $scope.acaoAtual = function() {
+	if (!$scope.estaEditando) {
+	    $scope.estaEditando = true;
+	    $scope.rotuloBotao = 'Salvar';
+	} else {
+	    $scope.estaEditando = false;
+	    $scope.rotuloBotao = 'Editar';
+	}
+    }
+    
+})
 
 angular.module('starter')
 .controller('ListagemController', function($scope, CarroService){

@@ -44,13 +44,16 @@ $stateProvider
 
     })
 
-    
-    .state('finalizarpedido', {
-	url : '/finalizarpedido/:carro',
-	templateUrl : 'templates/finalizarpedido.html',
-	controller : 'FinalizarPedidoController'
+        
+    .state('app.finalizarpedido', {
+        url : '/finalizarpedido/:carro',
+        views : {
+          'menuContent' : {
+            templateUrl : 'templates/finalizarpedido.html',
+            controller: 'FinalizarPedidoController'
+          }
+        }
     })
-
 
     .state('login', {
 	url : '/login',

@@ -55,4 +55,12 @@ upload para testes via ionic view
 	npm install : na pasta do projeto, instala tudo que precisa, ie, gulp, bower etc
 		
 	
+30/07/2017
 
+	ionic platforms add android
+	
+	ionic cordova build android
+	
+	ionic run android --device
+	
+	bower install ngCordova (já havia instalado o cordova globalmente)

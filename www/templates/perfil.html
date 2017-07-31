@@ -4,7 +4,9 @@
 		<div class="list card">
 			
 			<div class="item item-avatar">
+				<img src="{{caminhoFoto}}">
 				<h2>{{usuarioPerfil.nome}}</h2>
+				<button ng-show='estaEditando' ng-click='tirarFoto()' class='button button-positive'>foto</button>
 			</div>
 			
 			<div class="item item-body">

@@ -27,9 +27,8 @@ angular.module('starter')
 	    console.debug(erro);
 	    $ionicPopup.alert({
 	      title : 'Opa!',
-	      template : 'E-mail ou senha incorretos.'
+	      template : 'E-mail ou senha incorretos: '  + erro.data.mensagem
 	    })
-
 	})
 	  
 //	console.debug('login finalizado');
@@ -45,7 +44,7 @@ angular.module('starter')
 
 
 angular.module('starter')
-.controller('PerfilController', function($rootScope, $scope) {
+.controller('PerfilController', function($rootScope, $scope, $cordovaCamera) {
     
     $scope.estaEditando = false;
     
@@ -61,6 +60,30 @@ angular.module('starter')
 	    $scope.estaEditando = false;
 	    $scope.rotuloBotao = 'Editar';
 	}
+    }
+    
+    $scope.tirarFoto = function () {
+
+	let opcoes = {
+		quality: 50,
+//		destinationType: Camera.DestinationType.DATA_URL,
+//		sourceType: Camera.PictureSourceType.CAMERA,
+//		allowEdit: true,
+		encodingType: Camera.EncodingType.JPEG,
+//		targetWidth: 100,
+//		targetHeight: 100,
+		saveToPhotoAlbum: false,
+		correctOrientation: true
+	};
+	
+	$cordovaCamera.getPicture(opcoes).then(function(imageData) {
+//	      var image = document.getElementById('myImage');
+	      $scope.caminhoFoto = imageData;
+	}, function(err) {
+	   // error
+	    console.debug(err);
+	});
+	
     }
     
 })
@@ -102,7 +125,7 @@ angular.module('starter')
 
 angular.module('starter')
 .controller('FinalizarPedidoController', function($stateParams, $scope
-	, $ionicPopup, $state, CarroService){
+	, $ionicPopup, $state, CarroService, $ionicHistory){
 
 	$scope.carroFinalizado = angular.fromJson($stateParams.carro);
 
@@ -122,11 +145,16 @@ angular.module('starter')
 
 		CarroService.salvarPedido(pedidoFinalizado).then(function(dados){
 
+
+       		    $ionicHistory.nextViewOptions({
+       		        disableBack : true
+     		      });
+		      
 			$ionicPopup.alert({
 				title: 'Parabens',
 				template: 'Você acaba de comprar um carro.'
 			}).then(function(){
-				$state.go('listagem');
+				$state.go('app.listagem');
 			});
 
 		}, function(erro){

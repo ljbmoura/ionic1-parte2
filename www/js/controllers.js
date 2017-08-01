@@ -65,7 +65,7 @@ angular.module('starter')
     $scope.tirarFoto = function () {
 
 	let opcoes = {
-		quality: 50,
+		quality: 70,
 //		destinationType: Camera.DestinationType.DATA_URL,
 //		sourceType: Camera.PictureSourceType.CAMERA,
 //		allowEdit: true,

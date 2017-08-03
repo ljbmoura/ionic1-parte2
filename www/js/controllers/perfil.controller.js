@@ -1,5 +1,5 @@
 angular.module('starter')
-.controller('PerfilController', function($rootScope, $scope, $cordovaCamera) {
+.controller('PerfilController', function($rootScope, $scope, $cordovaCamera, ionicDatePicker) {
     
     $scope.estaEditando = false;
     
@@ -41,5 +41,15 @@ angular.module('starter')
 	
     }
     
+    let dpConfig = {
+	    callback : function (data) {
+		console.log(data);
+		$scope.usuarioPerfil.dataNascimento = new Date(data);
+	    }
+    } 
+    
+    $scope.abrirPopupCalendario = function() {
+	ionicDatePicker.openDatePicker(dpConfig);
+    }
 })
 

@@ -1,10 +1,22 @@
 angular.module('starter')
 .controller('FinalizarPedidoController', function($stateParams, $scope
-	, $ionicPopup, $state, CarroService, $ionicHistory){
+	, $ionicPopup, $state, CarroService, $ionicHistory, ionicDatePicker){
 
 	$scope.carroFinalizado = angular.fromJson($stateParams.carro);
 
 	$scope.pedido = {};
+	$scope.dataSelecionada = new Date();
+	
+	let dpConfig = {
+		callback : function (data) {
+		    console.log(data);
+		    $scope.dataSelecionada = new Date(data);
+		}
+	} 
+	
+	$scope.abrirPopupCalendario = () => {
+	    ionicDatePicker.openDatePicker(dpConfig);
+	}
 
 	$scope.finalizarPedido = function(){
 
@@ -21,7 +33,7 @@ angular.module('starter')
 		CarroService.salvarPedido(pedidoFinalizado).then(function(dados){
 
 
-       		    $ionicHistory.nextViewOptions({
+       		      $ionicHistory.nextViewOptions({
        		        disableBack : true
      		      });
 		      

@@ -13,7 +13,7 @@
 				<div class="list">
 					<label class="item item-input">
 						<span class="input-label" ng-show='!estaEditando'>Data de nascimento {{usuarioPerfil.dataNascimento}}</span>
-						<input type="text" ng-model='usuarioPerfil.dataNascimento' ng-show='estaEditando'>
+						<input type="text" ng-show='estaEditando' ng-model="usuarioPerfil.dataNascimento | date : 'dd/MM/yyyy' "  ng-focus="abrirPopupCalendario()" >
 					</label>
 					<label class="item item-input">
 						<span class="input-label" ng-show='!estaEditando'>Telefone {{usuarioPerfil.telefone | brPhoneNumber}}</span>
